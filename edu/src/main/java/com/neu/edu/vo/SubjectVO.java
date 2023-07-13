@@ -4,6 +4,15 @@ public class SubjectVO {
 
     private Integer subject_id;
     private String name;
+    private Integer teacher_id;
+
+    public Integer getTeacher_id() {
+        return teacher_id;
+    }
+
+    public void setTeacher_id(Integer teacher_id) {
+        this.teacher_id = teacher_id;
+    }
 
     public Integer getSubject_id() {
         return subject_id;

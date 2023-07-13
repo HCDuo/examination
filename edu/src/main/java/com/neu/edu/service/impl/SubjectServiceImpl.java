@@ -45,10 +45,10 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
-    public ResultModel deleteById(int id) {
+    public ResultModel deleteById(int subject_id) {
         ResultModel resultModel = new ResultModel();
 
-        subjectMapper.deleteById(id);
+        subjectMapper.deleteById(subject_id);
 
         resultModel.setCode(200);
         resultModel.setMsg("删除学科成功");
@@ -56,12 +56,13 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
-    public ResultModel updateById(int id, String name) {
+    public ResultModel updateById(int subject_id, String name,int teacher_id) {
         ResultModel resultModel = new ResultModel();
 
         Subject subject = new Subject();
         subject.setName(name);
-        subject.setSubject_id(id);
+        subject.setSubject_id(subject_id);
+        subject.setTeacher_id(teacher_id);
 
         subjectMapper.updateById(subject);
 

@@ -14,5 +14,5 @@ public interface SubjectService {
 
     ResultModel deleteById(int subject_id);
 
-    ResultModel updateById(int subject_id, String name);
+    ResultModel updateById(int subject_id, String name,int teacher_id);
 }
