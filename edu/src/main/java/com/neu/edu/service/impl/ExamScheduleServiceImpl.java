@@ -61,7 +61,7 @@ public class ExamScheduleServiceImpl implements ExamScheduleService {
 
         ExamSchedule examSchedule = new ExamSchedule();
         examSchedule.setName(name);
-        examSchedule.setTeacherId(id);
+        examSchedule.setTeacher_id(id);
 
         examScheduleMapper.updateById(examSchedule);
 

@@ -11,26 +11,26 @@ import javax.xml.crypto.Data;
  * @date:2023/7/13 15:29
  */
 public class ExamSchedule {
-    private String name;
-    private int TeacherId;
+    private String exam_name;
+    private int teacher_id;
     private String room;
-    private Data StartTime;
-    private Data EndTime;
+    private Data start_time;
+    private Data end_time;
 
     public String getName() {
-        return name;
+        return exam_name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.exam_name = name;
     }
 
-    public int getTeacherId() {
-        return TeacherId;
+    public int getTeacher_id() {
+        return teacher_id;
     }
 
-    public void setTeacherId(int teacherId) {
-        TeacherId = teacherId;
+    public void setTeacher_id(int teacher_id) {
+        this.teacher_id = teacher_id;
     }
 
     public String getRoom() {
@@ -41,19 +41,19 @@ public class ExamSchedule {
         this.room = room;
     }
 
-    public Data getStartTime() {
-        return StartTime;
+    public Data getStart_time() {
+        return start_time;
     }
 
-    public void setStartTime(Data startTime) {
-        StartTime = startTime;
+    public void setStart_time(Data start_time) {
+        this.start_time = start_time;
     }
 
-    public Data getEndTime() {
-        return EndTime;
+    public Data getEnd_time() {
+        return end_time;
     }
 
-    public void setEndTime(Data endTime) {
-        EndTime = endTime;
+    public void setEnd_time(Data end_time) {
+        this.end_time = end_time;
     }
 }
