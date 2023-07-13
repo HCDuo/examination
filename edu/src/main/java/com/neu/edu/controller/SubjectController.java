@@ -27,13 +27,13 @@ public class SubjectController {
     }
 
     @DeleteMapping("/{id}")
-    public ResultModel deleteById(@PathVariable("id") int id){
-        return subjectService.deleteById(id);
+    public ResultModel deleteById(@PathVariable("id") int subject_id){
+        return subjectService.deleteById(subject_id);
     }
 
     @PutMapping("/{id}")
-    public ResultModel updateById(@PathVariable("id") int id,String name){
-        return subjectService.updateById(id,name);
+    public ResultModel updateById(@PathVariable("id") int subject_id,String name){
+        return subjectService.updateById(subject_id,name);
     }
 
 }

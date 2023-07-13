@@ -11,7 +11,7 @@ public interface SubjectMapper {
 
     int add(Subject subject);
 
-    int deleteById(int id);
+    int deleteById(int subject_id);
 
     int updateById(Subject subject);
 }

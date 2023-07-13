@@ -39,7 +39,6 @@ public class SubjectServiceImpl implements SubjectService {
         subject.setName(subjectDTO.getName());
 
         subjectMapper.add(subject);
-
         resultModel.setCode(200);
         resultModel.setMsg("添加学科成功");
         return resultModel;
@@ -62,7 +61,7 @@ public class SubjectServiceImpl implements SubjectService {
 
         Subject subject = new Subject();
         subject.setName(name);
-        subject.setId(id);
+        subject.setSubject_id(id);
 
         subjectMapper.updateById(subject);
 

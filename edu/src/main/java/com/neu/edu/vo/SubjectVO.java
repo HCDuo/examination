@@ -2,15 +2,15 @@ package com.neu.edu.vo;
 
 public class SubjectVO {
 
-    private Integer id;
+    private Integer subject_id;
     private String name;
 
-    public Integer getId() {
-        return id;
+    public Integer getSubject_id() {
+        return subject_id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setSubject_id(Integer subject_id) {
+        this.subject_id = subject_id;
     }
 
     public String getName() {

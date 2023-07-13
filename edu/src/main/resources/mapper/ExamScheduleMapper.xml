@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.neu.edu.mapper.ExamScheduleMapper">
+
+    <select id="findAll" resultType="examScheduleVO">
+        select * from t_exam_schedule
+    </select>
+
+    <insert id="add" parameterType="examSchedule">
+        insert into t_exam_schedule (name) values(#{name})
+    </insert>
+
+    <delete id="deleteById" parameterType="int">
+        delete from t_exam_schedule where subject_id = #{subject_id}
+    </delete>
+
+    <update id="updateById" parameterType="examSchedule">
+        update t_exam_schedule set name = #{name} where subject_id = #{subject_id}
+    </update>
+</mapper>

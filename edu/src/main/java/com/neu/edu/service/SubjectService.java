@@ -12,7 +12,7 @@ public interface SubjectService {
 
     ResultModel add(SubjectDTO subjectDTO);
 
-    ResultModel deleteById(int id);
+    ResultModel deleteById(int subject_id);
 
-    ResultModel updateById(int id, String name);
+    ResultModel updateById(int subject_id, String name);
 }
