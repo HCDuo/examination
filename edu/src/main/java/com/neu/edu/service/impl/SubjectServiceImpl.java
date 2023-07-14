@@ -30,6 +30,18 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
+    public ResultModel<List<SubjectVO>> findById(int teacher_id) {
+
+        ResultModel<List<SubjectVO>> resultModel = new ResultModel<List<SubjectVO>>();
+        List<SubjectVO> subjectVOList = subjectMapper.findById(teacher_id);
+
+        resultModel.setCode(200);
+        resultModel.setMsg("查询学科成功");
+        resultModel.setData(subjectVOList);
+        return resultModel;
+    }
+
+    @Override
     public ResultModel add(SubjectDTO subjectDTO) {
 
         ResultModel resultModel = new ResultModel();

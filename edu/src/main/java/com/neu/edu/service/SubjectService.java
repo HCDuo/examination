@@ -10,6 +10,8 @@ public interface SubjectService {
 
     ResultModel<List<SubjectVO>> findAll();
 
+    ResultModel<List<SubjectVO>> findById(int teacher_id);
+
     ResultModel add(SubjectDTO subjectDTO);
 
     ResultModel deleteById(int subject_id);

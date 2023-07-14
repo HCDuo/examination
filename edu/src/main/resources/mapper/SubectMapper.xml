@@ -10,6 +10,10 @@
         select * from t_subject
     </select>
 
+    <select id="findById"  resultType="subjectVO">
+        select * from t_subject where teacher_id = #{teacher_id}
+    </select>
+
     <insert id="add" parameterType="subject">
         insert into t_subject
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -20,11 +24,6 @@
             #{subject_id},#{name},#{teacher_id}
         </trim>
     </insert>
-
-    <select id="findById"  resultType="subjectVO">
-        select * from t_subject where subject_id = #{subject_id}
-    </select>
-
 
     <delete id="deleteById" parameterType="int">
         delete  from t_subject where subject_id=#{subject_id}

@@ -21,6 +21,11 @@ public class SubjectController {
         return subjectService.findAll();
     }
 
+    @GetMapping("/{id}")
+    public ResultModel<List<SubjectVO>> findById(@PathVariable("id") int teacher_id){
+        return subjectService.findById(teacher_id);
+    }
+
     @PostMapping("")
     public ResultModel add(SubjectDTO subjectDTO){
         return subjectService.add(subjectDTO);
