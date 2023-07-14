@@ -6,9 +6,16 @@
 
 <mapper namespace="com.neu.edu.mapper.ExamScheduleMapper">
 
-    <select id="findAll" resultType="examScheduleVO">
+    <select id="findBySelection" resultType="examScheduleVO" parameterType="examScheduleDTO">
         select * from t_exam_schedule
+
+        <where>
+            <if test="exam_name!=null and exam_name!=''">
+                exam_name = #{exam_name}
+            </if>
+        </where>
     </select>
+
 
     <select id="findByName"  resultType="examScheduleVO">
         select * from t_exam_schedule where exam_name = #{exam_name}

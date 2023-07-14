@@ -6,6 +6,7 @@ import com.neu.edu.mapper.ExamScheduleMapper;
 import com.neu.edu.service.ExamScheduleService;
 import com.neu.edu.utils.ResultModel;
 import com.neu.edu.vo.ExamScheduleVO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,13 +20,17 @@ public class ExamScheduleServiceImpl implements ExamScheduleService {
 
 
     @Override
-    public ResultModel<List<ExamScheduleVO>> findAll() {
+    public ResultModel<List<ExamScheduleVO>> findBySelection(ExamScheduleDTO examScheduleDTO) {
         ResultModel<List<ExamScheduleVO>> resultModel = new ResultModel<List<ExamScheduleVO>>();
-        List<ExamScheduleVO> ExamScheduleVOList = examScheduleMapper.findAll();
-
-        resultModel.setCode(200);
-        resultModel.setMsg("查询考试成功");
-        resultModel.setData(ExamScheduleVOList);
+        List<ExamScheduleVO> ExamScheduleVOList = examScheduleMapper.findBySelection(examScheduleDTO);
+        if (ExamScheduleVOList == null) {
+            resultModel.setCode(401);
+            resultModel.setMsg("查询考试失败");
+        }else{
+            resultModel.setCode(200);
+            resultModel.setMsg("查询考试成功");
+            resultModel.setData(ExamScheduleVOList);
+        }
         return resultModel;
     }
 
@@ -51,6 +56,8 @@ public class ExamScheduleServiceImpl implements ExamScheduleService {
         examSchedule.setRoom(examScheduleDTO.getRoom());
         examSchedule.setStart_time(examScheduleDTO.getStart_time());
         examSchedule.setEnd_time(examScheduleDTO.getEnd_time());
+        examSchedule.setCourse_id(examScheduleDTO.getCourse_id());
+
 
         examScheduleMapper.add(examSchedule);
         resultModel.setCode(200);

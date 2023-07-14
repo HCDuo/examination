@@ -21,21 +21,10 @@ public class ExamScheduleController {
     private ExamScheduleService examScheduleService;
 
     @GetMapping("")
-    public ResultModel<List<ExamScheduleVO>> findAll(){
-        return examScheduleService.findAll();
+    public ResultModel<List<ExamScheduleVO>> findBySelection(ExamScheduleDTO examScheduleDTO){
+        return examScheduleService.findBySelection(examScheduleDTO);
     }
 
-    @GetMapping("/{exam_name}")
-    public ResultModel<List<ExamScheduleVO>> findByName(@PathVariable("exam_name") String exam_name){
-        try {
-            System.out.println(exam_name);
-            String decodedExamName = URLDecoder.decode(exam_name.replace("+", " "), "UTF-8");
-            System.out.println(decodedExamName);
-            return examScheduleService.findByName(decodedExamName);
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     @PostMapping("")
     public ResultModel add(ExamScheduleDTO examScheduleDTO){

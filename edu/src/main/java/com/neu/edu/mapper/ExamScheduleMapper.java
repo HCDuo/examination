@@ -2,6 +2,7 @@ package com.neu.edu.mapper;
 
 
 import com.neu.edu.domain.ExamSchedule;
+import com.neu.edu.dto.ExamScheduleDTO;
 import com.neu.edu.vo.ExamScheduleVO;
 
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  * @date:2023/7/13 15:53
  */
 public interface ExamScheduleMapper {
-    List<ExamScheduleVO> findAll();
+    List<ExamScheduleVO> findBySelection(ExamScheduleDTO examScheduleDTO);
 
     List<ExamScheduleVO> findByName(String  exam_name);
 

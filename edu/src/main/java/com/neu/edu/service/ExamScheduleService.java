@@ -15,7 +15,7 @@ import java.util.List;
  * @date:2023/7/13 16:15
  */
 public interface ExamScheduleService {
-    ResultModel<List<ExamScheduleVO>> findAll();
+    ResultModel<List<ExamScheduleVO>> findBySelection(ExamScheduleDTO examScheduleDTO);
 
     ResultModel<List<ExamScheduleVO>> findByName(String exam_name);
 
