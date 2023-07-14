@@ -1,6 +1,8 @@
 package com.neu.edu.vo;
 
-import javax.xml.crypto.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 /**
  * <pre>
@@ -11,11 +13,21 @@ import javax.xml.crypto.Data;
  * @date:2023/7/13 15:54
  */
 public class ExamScheduleVO {
+    private Integer course_id;
     private String exam_name;
     private int teacher_id;
     private String room;
-    private Data start_time;
-    private Data end_time;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date start_time;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date end_time;
+
+    public Integer getCourse_id() {
+        return course_id;
+    }
+    public void setCourse_id(Integer course_id) {
+        this.course_id = course_id;
+    }
     public String getExam_name() {
         return exam_name;
     }
@@ -39,19 +51,19 @@ public class ExamScheduleVO {
         this.room = room;
     }
 
-    public Data getStart_time() {
+    public Date getStart_time() {
         return start_time;
     }
 
-    public void setStart_time(Data start_time) {
+    public void setStart_time(Date start_time) {
         this.start_time = start_time;
     }
 
-    public Data getEnd_time() {
+    public Date getEnd_time() {
         return end_time;
     }
 
-    public void setEnd_time(Data end_time) {
+    public void setEnd_time(Date end_time) {
         this.end_time = end_time;
     }
 }
