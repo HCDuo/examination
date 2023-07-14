@@ -16,13 +16,11 @@ public class ExamSchedule {
     private String room;
     private Data start_time;
     private Data end_time;
-
-    public String getName() {
+    public String getExam_name() {
         return exam_name;
     }
-
-    public void setName(String name) {
-        this.exam_name = name;
+    public void setExam_name(String exam_name) {
+        this.exam_name = exam_name;
     }
 
     public int getTeacher_id() {

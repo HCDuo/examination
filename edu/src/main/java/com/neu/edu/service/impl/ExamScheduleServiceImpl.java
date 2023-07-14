@@ -21,22 +21,36 @@ public class ExamScheduleServiceImpl implements ExamScheduleService {
     @Override
     public ResultModel<List<ExamScheduleVO>> findAll() {
         ResultModel<List<ExamScheduleVO>> resultModel = new ResultModel<List<ExamScheduleVO>>();
-        List<ExamScheduleVO> subjectVOList = examScheduleMapper.findAll();
+        List<ExamScheduleVO> ExamScheduleVOList = examScheduleMapper.findAll();
 
         resultModel.setCode(200);
         resultModel.setMsg("查询考试成功");
-        resultModel.setData(subjectVOList);
+        resultModel.setData(ExamScheduleVOList);
         return resultModel;
     }
 
     @Override
-    public ResultModel add(ExamScheduleDTO subjectDTO) {
+    public ResultModel<List<ExamScheduleVO>> findByName(String exam_name) {
+        ResultModel<List<ExamScheduleVO>> resultModel = new ResultModel<List<ExamScheduleVO>>();
+        List<ExamScheduleVO> ExamScheduleVOList = examScheduleMapper.findByName(exam_name);
+
+        resultModel.setCode(200);
+        resultModel.setMsg("查询考试成功");
+        resultModel.setData(ExamScheduleVOList);
+        return resultModel;
+    }
+
+    @Override
+    public ResultModel add(ExamScheduleDTO examScheduleDTO) {
 
         ResultModel resultModel = new ResultModel();
-
         //DTO--domain
         ExamSchedule examSchedule = new ExamSchedule();
-        examSchedule.setName(subjectDTO.getName());
+        examSchedule.setExam_name(examScheduleDTO.getExam_name());
+        examSchedule.setTeacher_id(examScheduleDTO.getTeacher_id());
+        examSchedule.setRoom(examScheduleDTO.getRoom());
+        examSchedule.setStart_time(examScheduleDTO.getStart_time());
+        examSchedule.setEnd_time(examScheduleDTO.getEnd_time());
 
         examScheduleMapper.add(examSchedule);
         resultModel.setCode(200);
@@ -60,7 +74,7 @@ public class ExamScheduleServiceImpl implements ExamScheduleService {
         ResultModel resultModel = new ResultModel();
 
         ExamSchedule examSchedule = new ExamSchedule();
-        examSchedule.setName(name);
+        examSchedule.setExam_name(name);
         examSchedule.setTeacher_id(id);
 
         examScheduleMapper.updateById(examSchedule);

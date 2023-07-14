@@ -10,8 +10,8 @@
         select * from t_exam_schedule
     </select>
 
-    <select id="findById"  resultType="examScheduleVO">
-        select * from t_exam_schedule where subject_id = #{course_id}
+    <select id="findByName"  resultType="examScheduleVO">
+        select * from t_exam_schedule where exam_name = #{exam_name}
     </select>
 
     <insert id="add" parameterType="examSchedule">
@@ -21,7 +21,7 @@
         </trim>
 
         <trim prefix="values(" suffix=")" suffixOverrides=",">
-            #{course_id},#{exam_name},#{teacher_id},#{room},#{start_time},#{end_time},
+            #{course_id},#{exam_name},#{teacher_id},#{room},#{start_time},#{end_time}
         </trim>
     </insert>
 
@@ -35,7 +35,7 @@
             <if test="exam_name != null and exam_name != ''">
                 exam_name = #{exam_name},
             </if>
-            <if test="teacher_id != null and teacher_id != ''">
+            <if test="teacher_id != null">
                 teacher_id = #{teacher_id},
             </if>
             <if test="room != null and room != ''">
