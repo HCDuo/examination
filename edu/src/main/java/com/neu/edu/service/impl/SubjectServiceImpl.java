@@ -21,10 +21,14 @@ public class SubjectServiceImpl implements SubjectService {
     public ResultModel<List<SubjectVO>> findAll() {
         ResultModel<List<SubjectVO>> resultModel = new ResultModel<List<SubjectVO>>();
         List<SubjectVO> subjectVOList = subjectMapper.findAll();
-
-        resultModel.setCode(200);
-        resultModel.setMsg("查询学科成功");
-        resultModel.setData(subjectVOList);
+        if (subjectVOList == null) {
+            resultModel.setCode(401);
+            resultModel.setMsg("查询学科失败");
+        }else{
+            resultModel.setCode(200);
+            resultModel.setMsg("查询学科成功");
+            resultModel.setData(subjectVOList);
+        }
         return resultModel;
     }
 
@@ -33,10 +37,14 @@ public class SubjectServiceImpl implements SubjectService {
 
         ResultModel<List<SubjectVO>> resultModel = new ResultModel<List<SubjectVO>>();
         List<SubjectVO> subjectVOList = subjectMapper.findById(teacher_id);
-
-        resultModel.setCode(200);
-        resultModel.setMsg("查询学科成功");
-        resultModel.setData(subjectVOList);
+        if (subjectVOList == null) {
+            resultModel.setCode(401);
+            resultModel.setMsg("查询学科失败");
+        }else{
+            resultModel.setCode(200);
+            resultModel.setMsg("查询学科成功");
+            resultModel.setData(subjectVOList);
+        }
         return resultModel;
     }
 
@@ -49,10 +57,14 @@ public class SubjectServiceImpl implements SubjectService {
         Subject subject = new Subject();
         subject.setName(subjectDTO.getName());
         subject.setTeacher_id(subjectDTO.getTeacher_id());
-
-        subjectMapper.add(subject);
-        resultModel.setCode(200);
-        resultModel.setMsg("添加学科成功");
+        if (subject == null) {
+            resultModel.setCode(401);
+            resultModel.setMsg("添加学科失败");
+        }else {
+            subjectMapper.add(subject);
+            resultModel.setCode(200);
+            resultModel.setMsg("添加学科成功");
+        }
         return resultModel;
     }
 
@@ -60,10 +72,13 @@ public class SubjectServiceImpl implements SubjectService {
     public ResultModel deleteById(int subject_id) {
         ResultModel resultModel = new ResultModel();
 
-        subjectMapper.deleteById(subject_id);
-
-        resultModel.setCode(200);
-        resultModel.setMsg("删除学科成功");
+        if (subjectMapper.deleteById(subject_id) == 0) {
+            resultModel.setCode(401);
+            resultModel.setMsg("删除学科失败");
+        }else {
+            resultModel.setCode(200);
+            resultModel.setMsg("删除学科成功");
+        }
         return resultModel;
     }
 
@@ -77,9 +92,13 @@ public class SubjectServiceImpl implements SubjectService {
         subject.setTeacher_id(subjectDTO.getTeacher_id());
 
         subjectMapper.updateById(subject);
-
-        resultModel.setCode(200);
-        resultModel.setMsg("更新学科成功");
+        if (subject == null) {
+            resultModel.setCode(200);
+            resultModel.setMsg("更新学科失败");
+        }else{
+            resultModel.setCode(200);
+            resultModel.setMsg("更新学科成功");
+        }
         return resultModel;
     }
 }
