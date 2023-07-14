@@ -1,5 +1,6 @@
 package com.neu.edu.controller;
 
+import com.neu.edu.common.BusinessException;
 import com.neu.edu.dto.SubjectDTO;
 import com.neu.edu.service.SubjectService;
 import com.neu.edu.utils.ResultModel;
@@ -32,12 +33,12 @@ public class SubjectController {
     }
 
     @DeleteMapping("/{id}")
-    public ResultModel deleteById(@PathVariable("id") int subject_id){
+    public ResultModel deleteById(@PathVariable("id") int subject_id)throws BusinessException {
         return subjectService.deleteById(subject_id);
     }
 
     @PutMapping("/{subject_id}")
-    public ResultModel updateById(@PathVariable("subject_id")int subject_id, SubjectDTO subjectDTO){
+    public ResultModel updateById(@PathVariable("subject_id")int subject_id, SubjectDTO subjectDTO)throws BusinessException{
         return subjectService.updateById(subjectDTO);
     }
 

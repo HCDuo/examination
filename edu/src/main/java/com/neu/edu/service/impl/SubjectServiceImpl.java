@@ -1,5 +1,6 @@
 package com.neu.edu.service.impl;
 
+import com.neu.edu.common.BusinessException;
 import com.neu.edu.domain.Subject;
 import com.neu.edu.dto.SubjectDTO;
 import com.neu.edu.mapper.SubjectMapper;
@@ -52,42 +53,30 @@ public class SubjectServiceImpl implements SubjectService {
     public ResultModel add(SubjectDTO subjectDTO) {
 
         ResultModel resultModel = new ResultModel();
-
         //DTO--domain
         Subject subject = new Subject();
         subject.setName(subjectDTO.getName());
         subject.setTeacher_id(subjectDTO.getTeacher_id());
-        if (subject == null) {
-            resultModel.setCode(401);
-            resultModel.setMsg("添加学科失败");
-        }else {
-            subjectMapper.add(subject);
-            resultModel.setCode(200);
-            resultModel.setMsg("添加学科成功");
-        }
+        subjectMapper.add(subject);
+        resultModel.setCode(200);
+        resultModel.setMsg("添加学科成功");
         return resultModel;
     }
 
     @Override
-    public ResultModel deleteById(int subject_id) {
+    public ResultModel deleteById(int subject_id) throws BusinessException {
         ResultModel resultModel = new ResultModel();
-        try{
-            if (subjectMapper.deleteById(subject_id) == 0) {
-                resultModel.setCode(401);
-                resultModel.setMsg("删除学科失败");
-            }else {
-                resultModel.setCode(200);
-                resultModel.setMsg("删除学科成功");
-            }
-        }catch(Exception e){
-            resultModel.setCode(500);
-            resultModel.setMsg("有学生选修，不能删除");
+
+        if(subjectMapper.deleteById(subject_id) <= 0){
+            throw new BusinessException("删除学科");
         }
+        resultModel.setCode(200);
+        resultModel.setMsg("删除学科成功");
         return resultModel;
     }
 
     @Override
-    public ResultModel updateById(SubjectDTO subjectDTO) {
+    public ResultModel updateById(SubjectDTO subjectDTO) throws BusinessException {
         ResultModel resultModel = new ResultModel();
 
         Subject subject = new Subject();
@@ -95,14 +84,11 @@ public class SubjectServiceImpl implements SubjectService {
         subject.setSubject_id(subjectDTO.getSubject_id());
         subject.setTeacher_id(subjectDTO.getTeacher_id());
 
-        subjectMapper.updateById(subject);
-        if (subject == null) {
-            resultModel.setCode(200);
-            resultModel.setMsg("更新学科失败");
-        }else{
-            resultModel.setCode(200);
-            resultModel.setMsg("更新学科成功");
+        if(subjectMapper.updateById(subject) <= 0 || subject.getSubject_id() == null){
+            throw new BusinessException("更新学科");
         }
+        resultModel.setCode(200);
+        resultModel.setMsg("更新学科成功");
         return resultModel;
     }
 }
