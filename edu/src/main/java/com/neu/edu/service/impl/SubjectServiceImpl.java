@@ -17,7 +17,6 @@ public class SubjectServiceImpl implements SubjectService {
     @Autowired
     SubjectMapper subjectMapper;
 
-
     @Override
     public ResultModel<List<SubjectVO>> findAll() {
         ResultModel<List<SubjectVO>> resultModel = new ResultModel<List<SubjectVO>>();
