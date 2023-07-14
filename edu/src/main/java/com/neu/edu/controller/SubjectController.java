@@ -36,9 +36,9 @@ public class SubjectController {
         return subjectService.deleteById(subject_id);
     }
 
-    @PutMapping("/{id}")
-    public ResultModel updateById(@PathVariable("id") int subject_id,String name,int teacher_id){
-        return subjectService.updateById(subject_id,name,teacher_id);
+    @PutMapping("/{subject_id}")
+    public ResultModel updateById(@PathVariable("subject_id")int subject_id, SubjectDTO subjectDTO){
+        return subjectService.updateById(subjectDTO);
     }
 
 }

@@ -48,6 +48,7 @@ public class SubjectServiceImpl implements SubjectService {
         //DTO--domain
         Subject subject = new Subject();
         subject.setName(subjectDTO.getName());
+        subject.setTeacher_id(subjectDTO.getTeacher_id());
 
         subjectMapper.add(subject);
         resultModel.setCode(200);
@@ -67,13 +68,13 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
-    public ResultModel updateById(int subject_id, String name,int teacher_id) {
+    public ResultModel updateById(SubjectDTO subjectDTO) {
         ResultModel resultModel = new ResultModel();
 
         Subject subject = new Subject();
-        subject.setName(name);
-        subject.setSubject_id(subject_id);
-        subject.setTeacher_id(teacher_id);
+        subject.setName(subjectDTO.getName());
+        subject.setSubject_id(subjectDTO.getSubject_id());
+        subject.setTeacher_id(subjectDTO.getTeacher_id());
 
         subjectMapper.updateById(subject);
 

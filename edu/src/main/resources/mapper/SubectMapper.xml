@@ -35,13 +35,12 @@
             <if test="name != null and name != ''">
                 name = #{name},
             </if>
-            <if test="teacher_id != null and teacher_id != ''">
+            <if test="teacher_id != null">
                 teacher_id = #{teacher_id},
             </if>
         </trim>
-
         <where>
-            <if test="subject_id!=null">
+            <if test="subject_id != null">
                 subject_id = #{subject_id}
             </if>
         </where>
