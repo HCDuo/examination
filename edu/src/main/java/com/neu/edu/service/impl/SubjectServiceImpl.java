@@ -71,13 +71,17 @@ public class SubjectServiceImpl implements SubjectService {
     @Override
     public ResultModel deleteById(int subject_id) {
         ResultModel resultModel = new ResultModel();
-
-        if (subjectMapper.deleteById(subject_id) == 0) {
-            resultModel.setCode(401);
-            resultModel.setMsg("删除学科失败");
-        }else {
-            resultModel.setCode(200);
-            resultModel.setMsg("删除学科成功");
+        try{
+            if (subjectMapper.deleteById(subject_id) == 0) {
+                resultModel.setCode(401);
+                resultModel.setMsg("删除学科失败");
+            }else {
+                resultModel.setCode(200);
+                resultModel.setMsg("删除学科成功");
+            }
+        }catch(Exception e){
+            resultModel.setCode(500);
+            resultModel.setMsg("有学生选修，不能删除");
         }
         return resultModel;
     }

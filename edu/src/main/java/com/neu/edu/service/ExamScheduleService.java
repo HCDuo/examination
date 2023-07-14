@@ -17,8 +17,6 @@ import java.util.List;
 public interface ExamScheduleService {
     ResultModel<List<ExamScheduleVO>> findBySelection(ExamScheduleDTO examScheduleDTO);
 
-    ResultModel<List<ExamScheduleVO>> findByName(String exam_name);
-
     ResultModel add(ExamScheduleDTO examScheduleDTO);
 
     ResultModel deleteById(int course_id);

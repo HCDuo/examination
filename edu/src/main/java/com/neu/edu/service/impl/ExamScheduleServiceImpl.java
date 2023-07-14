@@ -35,17 +35,6 @@ public class ExamScheduleServiceImpl implements ExamScheduleService {
     }
 
     @Override
-    public ResultModel<List<ExamScheduleVO>> findByName(String exam_name) {
-        ResultModel<List<ExamScheduleVO>> resultModel = new ResultModel<List<ExamScheduleVO>>();
-        List<ExamScheduleVO> ExamScheduleVOList = examScheduleMapper.findByName(exam_name);
-
-        resultModel.setCode(200);
-        resultModel.setMsg("查询考试成功");
-        resultModel.setData(ExamScheduleVOList);
-        return resultModel;
-    }
-
-    @Override
     public ResultModel add(ExamScheduleDTO examScheduleDTO) {
 
         ResultModel resultModel = new ResultModel();
@@ -58,10 +47,14 @@ public class ExamScheduleServiceImpl implements ExamScheduleService {
         examSchedule.setEnd_time(examScheduleDTO.getEnd_time());
         examSchedule.setCourse_id(examScheduleDTO.getCourse_id());
 
-
-        examScheduleMapper.add(examSchedule);
-        resultModel.setCode(200);
-        resultModel.setMsg("添加考试成功");
+        if (examSchedule == null) {
+            resultModel.setCode(401);
+            resultModel.setMsg("添加考试失败");
+        }else {
+            examScheduleMapper.add(examSchedule);
+            resultModel.setCode(200);
+            resultModel.setMsg("添加考试成功");
+        }
         return resultModel;
     }
 
@@ -71,8 +64,13 @@ public class ExamScheduleServiceImpl implements ExamScheduleService {
 
         examScheduleMapper.deleteById(id);
 
-        resultModel.setCode(200);
-        resultModel.setMsg("删除考试成功");
+        if ( examScheduleMapper.deleteById(id) == 0) {
+            resultModel.setCode(401);
+            resultModel.setMsg("删除考试失败");
+        }else {
+            resultModel.setCode(200);
+            resultModel.setMsg("删除考试成功");
+        }
         return resultModel;
     }
 
@@ -81,6 +79,7 @@ public class ExamScheduleServiceImpl implements ExamScheduleService {
         ResultModel resultModel = new ResultModel();
 
         ExamSchedule examSchedule = new ExamSchedule();
+
         examSchedule.setExam_name(name);
         examSchedule.setTeacher_id(id);
 
