@@ -1,5 +1,6 @@
 package com.neu.edu.service;
 
+import com.neu.edu.common.BusinessException;
 import com.neu.edu.dto.ExamScheduleDTO;
 import com.neu.edu.utils.ResultModel;
 import com.neu.edu.vo.ExamScheduleVO;
@@ -19,7 +20,8 @@ public interface ExamScheduleService {
 
     ResultModel add(ExamScheduleDTO examScheduleDTO);
 
-    ResultModel deleteById(int course_id);
+    ResultModel deleteById(int course_id) throws BusinessException;
 
-    ResultModel updateById(int course_id, String name);
+    ResultModel updateById(ExamScheduleDTO examScheduleDTO) throws BusinessException;
+
 }

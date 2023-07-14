@@ -1,5 +1,6 @@
 package com.neu.edu.controller;
 
+import com.neu.edu.common.BusinessException;
 import com.neu.edu.dto.ExamScheduleDTO;
 import com.neu.edu.service.ExamScheduleService;
 import com.neu.edu.utils.ResultModel;
@@ -32,12 +33,12 @@ public class ExamScheduleController {
     }
 
     @DeleteMapping("/{id}")
-    public ResultModel deleteById(@PathVariable("id") int teacher_id){
+    public ResultModel deleteById(@PathVariable("id") int teacher_id) throws BusinessException {
         return examScheduleService.deleteById(teacher_id);
     }
 
-    @PutMapping("/{id}")
-    public ResultModel updateById(@PathVariable("id") int teacher_id,String name){
-        return examScheduleService.updateById(teacher_id,name);
+    @PutMapping("/{course_id}")
+    public ResultModel updateById(@PathVariable("course_id") int course_id,ExamScheduleDTO examScheduleDTO) throws BusinessException{
+        return examScheduleService.updateById(examScheduleDTO);
     }
 }
