@@ -8,6 +8,7 @@ import com.neu.edu.mapper.QuestionMapper;
 import com.neu.edu.service.QuestionService;
 import com.neu.edu.utils.ResultModel;
 import com.neu.edu.vo.QuestionVO;
+import com.neu.edu.vo.SubjectVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,10 +28,9 @@ public class QuestionServiceImpl implements QuestionService {
     QuestionMapper questionMapper;
 
     @Override
-    public ResultModel<List<QuestionVO>> findBySelection(QuestionDTO questionDTO) {
-        System.out.println(questionDTO.getSubject_id());
+    public ResultModel<List<QuestionVO>> findAll() {
         ResultModel<List<QuestionVO>> resultModel = new ResultModel<List<QuestionVO>>();
-        List<QuestionVO> questionVOList = questionMapper.findBySelection(questionDTO);
+        List<QuestionVO> questionVOList = questionMapper.findAll();
         if (questionVOList == null) {
             resultModel.setCode(401);
             resultModel.setMsg("查询问题失败");
@@ -38,6 +38,22 @@ public class QuestionServiceImpl implements QuestionService {
             resultModel.setCode(200);
             resultModel.setMsg("查询问题成功");
             resultModel.setData(questionVOList);
+        }
+        return resultModel;
+    }
+
+    @Override
+    public ResultModel<List<QuestionVO>> findById(int subject_id) {
+
+        ResultModel<List<QuestionVO>> resultModel = new ResultModel<List<QuestionVO>>();
+        List<QuestionVO> QuestionVOList = questionMapper.findById(subject_id);
+        if (QuestionVOList == null) {
+            resultModel.setCode(401);
+            resultModel.setMsg("查询问题失败");
+        }else{
+            resultModel.setCode(200);
+            resultModel.setMsg("查询问题成功");
+            resultModel.setData(QuestionVOList);
         }
         return resultModel;
     }

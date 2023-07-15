@@ -6,13 +6,12 @@
 
 <mapper namespace="com.neu.edu.mapper.QuestionMapper">
 
-    <select id="findBySelection" resultType="QuestionVO"  parameterType="QuestionDTO">
+    <select id="findAll" resultType="QuestionVO">
         select * from t_question
-        <where>
-            <if test="subject_id != null">
-                subject_id = #{subject_id}
-            </if>
-        </where>
+    </select>
+
+    <select id="findById"  resultType="QuestionVO">
+        select * from t_question where subject_id = #{subject_id}
     </select>
 
     <insert id="add" parameterType="Question">
