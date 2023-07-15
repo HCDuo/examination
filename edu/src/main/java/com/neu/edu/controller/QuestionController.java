@@ -18,8 +18,8 @@ public class QuestionController {
     private QuestionService questionService;
 
     @GetMapping("")
-    public ResultModel<List<QuestionVO>> findAll(){
-        return questionService.findAll();
+    public ResultModel<List<QuestionVO>> findBySelection(QuestionDTO questionDTO){
+        return questionService.findBySelection(questionDTO);
     }
 
     @PostMapping("")

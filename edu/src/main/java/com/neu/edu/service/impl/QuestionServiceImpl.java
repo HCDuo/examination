@@ -2,6 +2,7 @@ package com.neu.edu.service.impl;
 
 import com.neu.edu.common.BusinessException;
 import com.neu.edu.domain.Question;
+import com.neu.edu.dto.ExamScheduleDTO;
 import com.neu.edu.dto.QuestionDTO;
 import com.neu.edu.mapper.QuestionMapper;
 import com.neu.edu.service.QuestionService;
@@ -26,9 +27,9 @@ public class QuestionServiceImpl implements QuestionService {
     QuestionMapper questionMapper;
 
     @Override
-    public ResultModel<List<QuestionVO>> findAll() {
+    public ResultModel<List<QuestionVO>> findBySelection(QuestionDTO questionDTO) {
         ResultModel<List<QuestionVO>> resultModel = new ResultModel<List<QuestionVO>>();
-        List<QuestionVO> questionVOList = questionMapper.findAll();
+        List<QuestionVO> questionVOList = questionMapper.findBySelection(questionDTO);
 
         if (questionVOList == null) {
             resultModel.setCode(401);

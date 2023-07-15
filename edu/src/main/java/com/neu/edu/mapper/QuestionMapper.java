@@ -1,6 +1,7 @@
 package com.neu.edu.mapper;
 
 import com.neu.edu.domain.Question;
+import com.neu.edu.dto.QuestionDTO;
 import com.neu.edu.vo.QuestionVO;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  * @date:2023/7/15 10:57
  */
 public interface QuestionMapper {
-    List<QuestionVO> findAll();
+    List<QuestionVO> findBySelection(QuestionDTO questionDTO);
 
     int add(Question question);
 

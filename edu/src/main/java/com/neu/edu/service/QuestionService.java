@@ -1,6 +1,7 @@
 package com.neu.edu.service;
 
 import com.neu.edu.common.BusinessException;
+import com.neu.edu.dto.ExamScheduleDTO;
 import com.neu.edu.dto.QuestionDTO;
 import com.neu.edu.utils.ResultModel;
 import com.neu.edu.vo.QuestionVO;
@@ -16,7 +17,7 @@ import java.util.List;
  * @date:2023/7/15 10:58
  */
 public interface QuestionService {
-    ResultModel<List<QuestionVO>> findAll();
+    ResultModel<List<QuestionVO>> findBySelection(QuestionDTO questionDTO);
     ResultModel add(QuestionDTO questionDTO);
     ResultModel deleteById(int question_id) throws BusinessException;
     ResultModel updateById(QuestionDTO questionDTO) throws BusinessException;
