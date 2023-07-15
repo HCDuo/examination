@@ -7,12 +7,12 @@
 <mapper namespace="com.neu.edu.mapper.ExamScheduleMapper">
 
     <select id="findBySelection" resultType="examScheduleVO" parameterType="examScheduleDTO">
-        select * from t_exam_schedule
+        select* from t_exam_schedule
 
         <where>
-            <if test="exam_name!=null and exam_name!=''">
-                exam_name = #{exam_name}
-            </if>
+        <if test="exam_name!=null and exam_name!=''">
+            exam_name = #{exam_name}
+        </if>
         </where>
     </select>
 

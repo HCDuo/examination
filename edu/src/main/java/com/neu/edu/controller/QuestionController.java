@@ -17,10 +17,10 @@ public class QuestionController {
     @Autowired
     private QuestionService questionService;
 
-    @GetMapping("")
-    public ResultModel<List<QuestionVO>> findBySelection(QuestionDTO questionDTO){
-        return questionService.findBySelection(questionDTO);
-    }
+        @GetMapping("")
+        public ResultModel<List<QuestionVO>> findBySelection(QuestionDTO questionDTO){
+            return questionService.findBySelection(questionDTO);
+        }
 
     @PostMapping("")
     public ResultModel add(QuestionDTO questionDTO){

@@ -28,9 +28,9 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public ResultModel<List<QuestionVO>> findBySelection(QuestionDTO questionDTO) {
+        System.out.println(questionDTO.getSubject_id());
         ResultModel<List<QuestionVO>> resultModel = new ResultModel<List<QuestionVO>>();
         List<QuestionVO> questionVOList = questionMapper.findBySelection(questionDTO);
-
         if (questionVOList == null) {
             resultModel.setCode(401);
             resultModel.setMsg("查询问题失败");

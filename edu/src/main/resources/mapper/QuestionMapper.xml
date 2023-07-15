@@ -6,10 +6,10 @@
 
 <mapper namespace="com.neu.edu.mapper.QuestionMapper">
 
-    <select id="findBySelection" resultType="QuestionVO"  parameterType="examScheduleDTO">
+    <select id="findBySelection" resultType="QuestionVO"  parameterType="QuestionDTO">
         select * from t_question
         <where>
-            <if test="subject_id!=null">
+            <if test="subject_id != null">
                 subject_id = #{subject_id}
             </if>
         </where>
