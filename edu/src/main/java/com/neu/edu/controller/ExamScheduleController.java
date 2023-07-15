@@ -22,7 +22,6 @@ public class ExamScheduleController {
         return examScheduleService.findBySelection(examScheduleDTO);
     }
 
-
     @PostMapping("")
     public ResultModel add(ExamScheduleDTO examScheduleDTO){
         return examScheduleService.add(examScheduleDTO);

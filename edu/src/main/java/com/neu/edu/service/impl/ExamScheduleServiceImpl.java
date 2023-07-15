@@ -39,12 +39,12 @@ public class ExamScheduleServiceImpl implements ExamScheduleService {
         ResultModel resultModel = new ResultModel();
         //DTO--domain
         ExamSchedule examSchedule = new ExamSchedule();
+        examSchedule.setCourse_id(examScheduleDTO.getCourse_id());
         examSchedule.setExam_name(examScheduleDTO.getExam_name());
         examSchedule.setTeacher_id(examScheduleDTO.getTeacher_id());
         examSchedule.setRoom(examScheduleDTO.getRoom());
         examSchedule.setStart_time(examScheduleDTO.getStart_time());
         examSchedule.setEnd_time(examScheduleDTO.getEnd_time());
-        examSchedule.setCourse_id(examScheduleDTO.getCourse_id());
 
         if (examSchedule == null) {
             resultModel.setCode(401);
