@@ -78,6 +78,7 @@ public class QuestionServiceImpl implements QuestionService {
 
         Question question = new Question();
 
+        question.setQuestion_id(questionDTO.getQuestion_id());
         question.setTitle(questionDTO.getTitle());
         question.setScore(questionDTO.getScore());
         question.setType(questionDTO.getType());
