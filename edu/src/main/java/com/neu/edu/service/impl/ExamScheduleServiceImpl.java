@@ -58,9 +58,9 @@ public class ExamScheduleServiceImpl implements ExamScheduleService {
     }
 
     @Override
-    public ResultModel deleteById(int id) throws BusinessException {
+    public ResultModel deleteById(int course_id) throws BusinessException {
         ResultModel resultModel = new ResultModel();
-        if (examScheduleMapper.deleteById(id) <= 0) {
+        if (examScheduleMapper.deleteById(course_id) <= 0) {
             throw new BusinessException("删除考试失败");
         }
         resultModel.setCode(200);

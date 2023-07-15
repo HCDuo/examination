@@ -33,8 +33,8 @@ public class ExamScheduleController {
     }
 
     @DeleteMapping("/{id}")
-    public ResultModel deleteById(@PathVariable("id") int teacher_id) throws BusinessException {
-        return examScheduleService.deleteById(teacher_id);
+    public ResultModel deleteById(@PathVariable("id") int course_id) throws BusinessException {
+        return examScheduleService.deleteById(course_id);
     }
 
     @PutMapping("/{course_id}")
