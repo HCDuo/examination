@@ -5,6 +5,7 @@ import com.neu.edu.dto.ExamScheduleDTO;
 import com.neu.edu.service.ExamScheduleService;
 import com.neu.edu.utils.ResultModel;
 import com.neu.edu.vo.ExamScheduleVO;
+import com.neu.edu.vo.QuestionVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,10 @@ public class ExamScheduleController {
     public ResultModel<List<ExamScheduleVO>> findBySelection(ExamScheduleDTO examScheduleDTO){
         return examScheduleService.findBySelection(examScheduleDTO);
     }
-
+    @GetMapping("/{id}")
+    public ResultModel<List<ExamScheduleVO>> findById(@PathVariable("id") int teacher_id){
+        return examScheduleService.findById(teacher_id);
+    }
     @PostMapping("")
     public ResultModel add(ExamScheduleDTO examScheduleDTO){
         return examScheduleService.add(examScheduleDTO);

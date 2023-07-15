@@ -4,6 +4,7 @@ import com.neu.edu.common.BusinessException;
 import com.neu.edu.dto.ExamScheduleDTO;
 import com.neu.edu.utils.ResultModel;
 import com.neu.edu.vo.ExamScheduleVO;
+import com.neu.edu.vo.QuestionVO;
 
 import java.util.List;
 
@@ -17,6 +18,8 @@ import java.util.List;
  */
 public interface ExamScheduleService {
     ResultModel<List<ExamScheduleVO>> findBySelection(ExamScheduleDTO examScheduleDTO);
+
+    ResultModel<List<ExamScheduleVO>> findById(int teacher_id);
 
     ResultModel add(ExamScheduleDTO examScheduleDTO);
 

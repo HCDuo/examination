@@ -16,6 +16,10 @@
         </where>
     </select>
 
+    <select id="findById"  resultType="examScheduleVO">
+        select * from t_exam_schedule where teacher_id = #{teacher_id}
+    </select>
+
 
     <select id="findByName"  resultType="examScheduleVO">
         select * from t_exam_schedule where exam_name = #{exam_name}

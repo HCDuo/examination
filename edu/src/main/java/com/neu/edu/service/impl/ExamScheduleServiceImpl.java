@@ -7,6 +7,7 @@ import com.neu.edu.mapper.ExamScheduleMapper;
 import com.neu.edu.service.ExamScheduleService;
 import com.neu.edu.utils.ResultModel;
 import com.neu.edu.vo.ExamScheduleVO;
+import com.neu.edu.vo.QuestionVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,21 @@ public class ExamScheduleServiceImpl implements ExamScheduleService {
             resultModel.setCode(200);
             resultModel.setMsg("查询考试成功");
             resultModel.setData(ExamScheduleVOList);
+        }
+        return resultModel;
+    }
+
+    @Override
+    public ResultModel<List<ExamScheduleVO>> findById(int teacher_id) {
+        ResultModel<List<ExamScheduleVO>> resultModel = new ResultModel<List<ExamScheduleVO>>();
+        List<ExamScheduleVO> ExamScheduleList = examScheduleMapper.findById(teacher_id);
+        if (ExamScheduleList == null) {
+            resultModel.setCode(401);
+            resultModel.setMsg("查询问题失败");
+        }else{
+            resultModel.setCode(200);
+            resultModel.setMsg("查询问题成功");
+            resultModel.setData(ExamScheduleList);
         }
         return resultModel;
     }

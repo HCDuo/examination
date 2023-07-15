@@ -11,4 +11,7 @@ public interface ScoreMapper {
 
     int updateById(Score score);
 
+    List<ScoreVO> find(int id);
+
+
 }
